@@ -13,7 +13,6 @@ public class Cars {
     Long chassisNo;
 
     String type;
-    String ime;
 
     String available;
 
