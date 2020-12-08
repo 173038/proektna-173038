@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>product</title>
+</head>
+<body>
+<h2 class="alert-warning">Insert a vehicle:</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <form action="/product"
+                  method="post"
+                  enctype="multipart/form-data"
+                  th:object="${newCar}">
+                <input type="text" hidden="hidden" name="id" th:value="${newCar.getChassisNo()}">
+                <div class="form-group">
+                    <label for="chassisNo">Car chassisNo</label>
+                    <input type="text"
+                           class="form-control"
+                           th:value="${newCar.getChassisNo()}"
+                           id="chassisNo"
+                           name="chassisNo"
+                           th:field="*{chassisNo}"
+                           required
+                           placeholder="Enter car chassisNo">
+                </div>
+<!--                <div class="form-group">-->
+<!--                    <label for="manufacturer">Car chassisNo</label>-->
+<!--                    <input type="text"-->
+<!--                           class="form-control"-->
+<!--                           th:value="${newCar.getManufacturer()}"-->
+<!--                           id="manufacturer"-->
+<!--                           name="manufacturer"-->
+<!--                           th:field="*{manufacturer}"-->
+<!--                           required-->
+<!--                           placeholder="Enter car manufacturer">-->
+<!--                </div>-->
+                <div class="form-group">
+                    <label for="price">Car price per day</label>
+                    <input type="text"
+                           class="form-control"
+                           th:value="${newCar.getPrice()}"
+                           id="price"
+                           name="price"
+                           th:field="*{price}"
+                           required
+                           placeholder="Enter car price">
+                </div>
+                <div class="form-group">
+                    <label for="available">Car is available</label>
+                    <input type="text"
+                           class="form-control"
+                           th:value="${newCar.getAvailable()}"
+                           id="available"
+                           name="available"
+                           th:field="*{available}"
+                           required
+                           placeholder="Enter car available">
+                </div>
+                <div class="form-group">
+                    <label for="registerNo">Car registerNo</label>
+                    <input type="text"
+                           class="form-control"
+                           th:value="${newCar.getRegisterNo()}"
+                           id="registerNo"
+                           name="registerNo"
+                           th:field="*{registerNo}"
+                           required
+                           placeholder="Enter car registerNo">
+                </div>
+                <div class="form-group">
+                    <label for="type">Car type</label>
+                    <input type="text"
+                           class="form-control"
+                           th:value="${newCar.getType()}"
+                           id="type"
+                           name="type"
+                           th:field="*{type}"
+                           required
+                           placeholder="Enter car type">
+                </div>
+
+                <div class="form-group">
+                    <label>Manufacturer</label>
+                    <select th:field="*{manufacturer}" class="form-control">
+                        <option
+                                th:selected="${newCar.getManufacturer() != null && newCar.getManufacturer().getId() == man.getId()}"
+                                th:each="man : ${manufacturers}"
+                                th:value="${man.getId()}"
+                                th:text="${man.getName()}">
+                        </option>
+                    </select>
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a type="button" class="btn btn-primary" href="/product">Back</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
