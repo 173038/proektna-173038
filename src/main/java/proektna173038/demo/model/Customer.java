@@ -20,6 +20,8 @@ public class Customer {
 
     String password;
 
+    public Customer(){}
+
     public String getUsername() {
         return username;
     }
@@ -41,8 +43,6 @@ public class Customer {
         this.password = password;
     }
 
-    public Customer() {
-    }
 
     public Integer getID() {
         return ID;

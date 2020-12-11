@@ -3,7 +3,6 @@ package proektna173038.demo.service;
 import proektna173038.demo.model.Customer;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface CustomerService {
     //CRUD
@@ -17,7 +16,11 @@ public interface CustomerService {
 
     void deleteByID(Integer id);
 
-    Optional<Customer> login(String username, String password);
+    List<Customer> login(String username, String password);
+
+    Customer loginn(String username, String password);
+
+    Customer register(String username, String password);
 
     Customer findByUsernameAndPassword(String username, String password);
 }

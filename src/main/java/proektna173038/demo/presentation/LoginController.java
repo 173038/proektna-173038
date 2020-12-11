@@ -55,6 +55,7 @@ import proektna173038.demo.model.exceptions.InvalidUserCredentialsException;
 import proektna173038.demo.service.CustomerService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -74,7 +75,7 @@ public class LoginController{
 
     @PostMapping
     public String login(HttpServletRequest request, Model model){
-        Optional<Customer> customer;
+        List<Customer> customer;
         try{
             customer=this.customerService.login(request.getParameter("id"),
                     request.getParameter("name"));

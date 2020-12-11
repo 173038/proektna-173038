@@ -8,7 +8,6 @@ import proektna173038.demo.repository.CustomerRepository;
 import proektna173038.demo.service.CustomerService;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -52,18 +51,42 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Optional<Customer> login(String username, String password) {
+    public List<Customer> login(String username, String password) {
         if (username==null || username.isEmpty() || password==null || password.isEmpty()) {
             throw new InvalidArgumentsException();
         }
-        return customerRepository.findByUsernameAndPassword(username, password);
+       // return customerRepository.save(username, password);
+        return customerRepository.findAll();
 
+                /*
+                eturn userRepository.findByUsernameAndPassword(username,
+                password)
+
+                 */
+    }
+    @Override
+    public Customer loginn(String username, String password){
+        return (Customer) customerRepository.findAll();
+    }
+
+    @Override
+    public Customer register(String username, String password ){
+        if (username==null || username.isEmpty()  || password==null || password.isEmpty())
+            throw new InvalidArgumentsException();
+
+        Customer customer = new Customer(username,password);
+        return customerRepository.save(customer);
     }
 
     @Override
     public Customer findByUsernameAndPassword(String username, String password) {
-        return this.customerRepository.findByUsernameAndPassword(username, password).orElse(null);
+        return null;
     }
+//
+//    @Override
+//    public Customer findByUsernameAndPassword(String username, String password) {
+//        return this.customerRepository.findByUsernameAndPassword(username, password).orElse(null);
+//    }
 
 
 }
